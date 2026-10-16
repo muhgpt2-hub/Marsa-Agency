@@ -1180,27 +1180,25 @@ html[dir="ltr"] .about-content .section-title{text-align:left}
   .nav{padding:16px 5%}
   .nav.scrolled{padding:12px 5%}
 
-  .nav-links{
-    position:fixed;
-    top:0;
-    right:-100%;
-    width:min(320px,86vw);
-    height:100vh;
-    height:100dvh;
-    background:rgba(11,11,13,.99);
-    backdrop-filter:blur(24px);
-    -webkit-backdrop-filter:blur(24px);
-    flex-direction:column;
-    align-items:stretch;
-    justify-content:flex-start;
-    gap:0;
-    padding:90px 0 32px;
-    border-left:1px solid var(--line);
-    transition:right .5s var(--ease);
-    z-index:950;
-    overflow-y:auto;
-    box-shadow:-20px 0 60px rgba(0,0,0,.7);
-  }
+.nav-links{
+  position:fixed;
+  top:0;
+  right:-100%;
+  width:min(320px,86vw);
+  height:100vh;
+  height:100dvh;
+  background:#0B0B0D;
+  flex-direction:column;
+  align-items:stretch;
+  justify-content:flex-start;
+  gap:0;
+  padding:90px 0 32px;
+  border-left:1px solid var(--line);
+  transition:right .5s var(--ease);
+  z-index:950;
+  overflow-y:auto;
+  box-shadow:-20px 0 60px rgba(0,0,0,.7);
+}
   html[dir="ltr"] .nav-links{
     right:auto;
     left:-100%;
@@ -1409,5 +1407,20 @@ html[dir="ltr"] .about-content .section-title{text-align:left}
   .cursor-dot,
   .cursor-ring{
     display:none !important;
+  }
+}
+/* ===== إصلاح القائمة على الموبايل ===== */
+@media(max-width:860px){
+  .nav-links.open a,
+  .nav-links a{
+    color:#F4F0E8 !important;
+    -webkit-text-fill-color:#F4F0E8 !important;
+    opacity:1 !important;
+    visibility:visible !important;
+  }
+  .nav-links.open li,
+  .nav-links li{
+    opacity:1 !important;
+    visibility:visible !important;
   }
 }
