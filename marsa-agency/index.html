@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="MARSA — شركة تصميم وتطوير المواقع الاحترافية">
+<meta name="theme-color" content="#050608">
+<title>MARSA | مرسى — نبني مواقع تجيب عملاء</title>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@200;300;400;500;600;700&family=Noto+Kufi+Arabic:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+
+<!-- Favicon -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
+
+<!-- Styles -->
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+<canvas id="bg-canvas" aria-hidden="true"></canvas>
+<div class="scanlines" aria-hidden="true"></div>
+
+<!-- ==================== LOADER ==================== -->
+<div id="loader">
+  <div class="loader-brand">
+    <div class="loader-brand-mark">
+      <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 27 L8 13 Q8 11 10 11 Q12 11 12 13 L12 19 Q12 20 13 20 Q14 20 14 19 L14 13 Q14 11 16 11 L18 11 Q20 11 20 13 L20 19 Q20 20 21 20 Q22 20 22 19 L22 13 Q22 11 24 11 Q26 11 26 13 L26 27" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M8 31 Q 14 28.5, 20 31 T 32 31" fill="none" stroke="currentColor" stroke-width="1.8" opacity="0.75" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="loader-brand-text">
+      <b>MARS<em>A</em></b>
+      <small>Digital Agency</small>
+    </div>
+  </div>
+  <div class="loader-progress"><span id="loadBarFill"></span></div>
+  <div class="loader-meta">
+    <span>Loading</span>
+    <b><span id="pct">0</span>%</b>
+  </div>
+</div>
+
+<!-- ==================== NAV ==================== -->
+<nav class="nav" id="nav">
+  <a class="brand" id="brandLogo">
+    <div class="brand-mark">
+      <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" width="22" height="22">
+        <path d="M8 27 L8 13 Q8 11 10 11 Q12 11 12 13 L12 19 Q12 20 13 20 Q14 20 14 19 L14 13 Q14 11 16 11 L18 11 Q20 11 20 13 L20 19 Q20 20 21 20 Q22 20 22 19 L22 13 Q22 11 24 11 Q26 11 26 13 L26 27" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M8 31 Q 14 28.5, 20 31 T 32 31" fill="none" stroke="currentColor" stroke-width="1.8" opacity="0.75" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="brand-name">MARS<em>A</em></div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#home">الرئيسية</a></li>
+    <li><a href="#services">خدماتنا</a></li>
+    <li><a href="#why">لماذا نحن</a></li>
+    <li><a href="#calculator">حاسبة السعر</a></li>
+    <li><a href="#order">اطلب الآن</a></li>
+    <li><a href="#track">تتبّع</a></li>
+  </ul>
+  <a href="#order" class="nav-cta">ابدأ مشروعك</a>
+  <button type="button" class="nav-toggle" id="navToggle" aria-label="القائمة">☰</button>
+</nav>
+<div class="nav-overlay" id="navOverlay"></div>
+
+<!-- ==================== HERO ==================== -->
+<section class="hero" id="home">
+  <div class="eyebrow reveal"><span class="eyebrow-dot"></span><span>MARSA AGENCY — متاحون الآن</span></div>
+  <h1 class="reveal d1">نصنع لك موقعاً<br><span class="rotator" id="rotator">احترافياً</span><br>يليق بعلامتك التجارية</h1>
+  <p class="reveal d2">في <b style="color:var(--accent)">مرسى</b> لا نصمم مواقع فقط — نبني تجارب رقمية تُحوّل الزائر إلى عميل. مواقع عيادات، صالونات، مطاعم، متاجر وشركات، مع أنظمة حجز متكاملة ولوحات تحكم ذكية.</p>
+  <div class="hero-actions reveal d3">
+    <a href="#order" class="btn btn-primary">🚀 اطلب موقعك الآن <span class="btn-arrow">←</span></a>
+    <a href="#calculator" class="btn btn-ghost">💰 احسب تكلفتك</a>
+  </div>
+  <div class="hero-stats reveal d4">
+    <div class="hero-stat"><div class="v"><span data-count="240">0</span><small>+</small></div><div class="l">مشروع مكتمل</div></div>
+    <div class="hero-stat"><div class="v"><span data-count="98">0</span><small>%</small></div><div class="l">رضا العملاء</div></div>
+    <div class="hero-stat"><div class="v"><span data-count="7">0</span></div><div class="l">أيام التسليم</div></div>
+    <div class="hero-stat"><div class="v"><span data-count="24">0</span><small>س</small></div><div class="l">زمن الرد</div></div>
+  </div>
+</section>
+
+<!-- ==================== FEATURES ==================== -->
+<section class="section" id="features">
+  <div class="section-head reveal">
+    <div class="section-eyebrow">إزاي بنشتغل؟</div>
+    <h2 class="section-title">4 خطوات <em>فقط</em> لموقعك</h2>
+    <p class="section-desc">كل خطوة بتتحقق من بياناتها، وفي الآخر تراجع كل حاجة قبل الإرسال.</p>
+  </div>
+  <div class="features-grid">
+    <div class="feature reveal"><div class="feature-ico">◈</div><h3>بدون تعقيد</h3><p>الطلب مقسّم على خطوات قصيرة. تقدر ترجع لأي خطوة تعدّل فيها قبل الإرسال.</p></div>
+    <div class="feature reveal d1"><div class="feature-ico">✦</div><h3>تنبيه فوري</h3><p>لو الإيميل أو الرقم فيه خطأ، هيظهر تنبيه تحت الحقل فوراً، مش بعد الإرسال.</p></div>
+    <div class="feature reveal d2"><div class="feature-ico">◐</div><h3>مش هتفقد شغلك</h3><p>لو قفلت الصفحة بالغلط ورجعت، هتلاقي كل بياناتك لسه موجودة.</p></div>
+    <div class="feature reveal d3"><div class="feature-ico">❖</div><h3>رقم مرجعي فريد</h3><p>بعد الإرسال هتستلم كود زي <span style="font-family:var(--mono);color:var(--accent);font-size:12px">MRS-2026-XXXX</span> تتابع بيه طلبك.</p></div>
+  </div>
+</section>
+
+<!-- ==================== SERVICES ==================== -->
+<section class="section" id="services">
+  <div class="section-head reveal">
+    <div class="section-eyebrow">خدماتنا</div>
+    <h2 class="section-title">حلول <em>مصممة</em> لمجال عملك</h2>
+    <p class="section-desc">لكل نشاط احتياجاته. نُصمّم كل موقع ليتحدث لغة جمهورك.</p>
+  </div>
+  <div class="svc-grid">
+    <div class="svc reveal"><div class="svc-ico">🩺</div><h3>مواقع العيادات والمراكز الطبية</h3><p>نظام حجز مواعيد ذكي، عرض الأطباء والتخصصات، وملفات المرضى.</p><div class="svc-tags"><span>حجز</span><span>ملف الطبيب</span><span>تذكير واتساب</span></div><div class="svc-price"><b class="num">3,500</b><small>ج.م — تبدأ من</small></div></div>
+    <div class="svc reveal d1"><div class="svc-ico">💈</div><h3>مواقع صالونات الحلاقة</h3><p>معرض أعمال، حجز موعد، اختيار الحلاق المفضل، وباقات تسويقية.</p><div class="svc-tags"><span>معرض</span><span>حجز</span><span>باقات</span></div><div class="svc-price"><b class="num">2,900</b><small>ج.م — تبدأ من</small></div></div>
+    <div class="svc reveal d2"><div class="svc-ico">🍽️</div><h3>مواقع المطاعم والكافيهات</h3><p>قائمة تفاعلية، طلب أونلاين، حجز طاولات، وعرض العروض اليومية.</p><div class="svc-tags"><span>قائمة</span><span>طلب</span><span>حجز</span></div><div class="svc-price"><b class="num">3,900</b><small>ج.م — تبدأ من</small></div></div>
+    <div class="svc reveal d3"><div class="svc-ico">🛍️</div><h3>المتاجر الإلكترونية</h3><p>متجر متكامل بسلة شراء، بوابات دفع آمنة، وإدارة مخزون.</p><div class="svc-tags"><span>سلة</span><span>دفع</span><span>مخزون</span></div><div class="svc-price"><b class="num">5,500</b><small>ج.م — تبدأ من</small></div></div>
+    <div class="svc reveal d4"><div class="svc-ico">🏢</div><h3>مواقع الشركات والخدمات</h3><p>واجهة احترافية، صفحات خدمات، ومدونة لتعزيز ظهورك في جوجل.</p><div class="svc-tags"><span>هوية</span><span>خدمات</span><span>SEO</span></div><div class="svc-price"><b class="num">4,200</b><small>ج.م — تبدأ من</small></div></div>
+    <div class="svc reveal d5"><div class="svc-ico">🎨</div><h3>معرض الأعمال الشخصي</h3><p>للمصممين والمصورين — بورتفوليو أنيق بأسلوب سينمائي.</p><div class="svc-tags"><span>بورتفوليو</span><span>أنيميشن</span><span>CV</span></div><div class="svc-price"><b class="num">2,200</b><small>ج.م — تبدأ من</small></div></div>
+  </div>
+</section>
+
+<!-- ==================== WHY ==================== -->
+<section class="section" id="why">
+  <div class="section-head reveal">
+    <div class="section-eyebrow">لماذا مرسى؟</div>
+    <h2 class="section-title">4 أسباب <em>تجعلنا</em> الخيار الأول</h2>
+    <p class="section-desc">لا نبيع مواقع جاهزة. نبني حلولاً مخصصة بمعايير عالمية.</p>
+  </div>
+  <div class="why-grid">
+    <div class="why reveal"><span class="why-ico">⚡</span><h4>سرعة خارقة</h4><p>مواقعنا تُحمّل في أقل من ثانية. السرعة = ترتيب أفضل في جوجل.</p></div>
+    <div class="why reveal d1"><span class="why-ico">📱</span><h4>متجاوب 100%</h4><p>موقعك سيبدو مذهلاً على الجوال والتابلت والكمبيوتر.</p></div>
+    <div class="why reveal d2"><span class="why-ico">🔍</span><h4>صديق جوجل</h4><p>نبني موقعك ليكون متوافق مع محركات البحث من اليوم الأول.</p></div>
+    <div class="why reveal d3"><span class="why-ico">🛡️</span><h4>أمان متقدم</h4><p>تشفير SSL، حماية من الاختراق، ونسخ احتياطي دوري.</p></div>
+    <div class="why reveal d4"><span class="why-ico">🎯</span><h4>دعم مدى الحياة</h4><p>نبقى معك للصيانة والتطوير والتحديثات المستمرة.</p></div>
+    <div class="why reveal d5"><span class="why-ico">📊</span><h4>لوحة تحكم ذكية</h4><p>تحكّم كامل في طلباتك وحجوزاتك وإحصائياتك.</p></div>
+    <div class="why reveal d6"><span class="why-ico">💎</span><h4>تصميم لا يُنسى</h4><p>هوية بصرية مميزة تجعل موقعك مختلفاً عن أي منافس.</p></div>
+    <div class="why reveal d6"><span class="why-ico">⏱️</span><h4>تسليم في الوقت</h4><p>متوسط تنفيذ المشروع 5-10 أيام عمل حسب الحجم.</p></div>
+  </div>
+</section>
+
+<!-- ==================== CALCULATOR ==================== -->
+<section class="section" id="calculator">
+  <div class="section-head reveal">
+    <div class="section-eyebrow">حاسبة التكلفة</div>
+    <h2 class="section-title">احسب تكلفتك <em>في ثوانٍ</em></h2>
+    <p class="section-desc">اختر نوع نشاطك، عدد الصفحات، والمميزات — واحصل على تقدير فوري.</p>
+  </div>
+  <div class="calc">
+    <div class="calc-panel reveal">
+      <div class="calc-group">
+        <div class="calc-label"><span class="n">1</span> نوع النشاط التجاري</div>
+        <div class="opts" id="optType">
+          <div class="opt on" data-price="3500" data-name="عيادة / مركز طبي">🩺 عيادة<small>3,500 ج.م</small></div>
+          <div class="opt" data-price="2900" data-name="صالون حلاقة">💈 صالون<small>2,900 ج.م</small></div>
+          <div class="opt" data-price="3900" data-name="مطعم / كافيه">🍽️ مطعم<small>3,900 ج.م</small></div>
+          <div class="opt" data-price="5500" data-name="متجر إلكتروني">🛍️ متجر<small>5,500 ج.م</small></div>
+          <div class="opt" data-price="4200" data-name="شركة / خدمات">🏢 شركة<small>4,200 ج.م</small></div>
+          <div class="opt" data-price="2200" data-name="بورتفوليو">🎨 بورتفوليو<small>2,200 ج.م</small></div>
+        </div>
+      </div>
+      <div class="calc-group">
+        <div class="calc-label"><span class="n">2</span> عدد الصفحات المطلوبة</div>
+        <div class="range-wrap">
+          <input type="range" id="pagesRange" min="1" max="15" value="5" step="1">
+          <div class="range-val num" id="pagesVal">5</div>
+        </div>
+      </div>
+      <div class="calc-group">
+        <div class="calc-label"><span class="n">3</span> مميزات إضافية</div>
+        <div class="feats" id="featsBox">
+          <div class="feat" data-price="900" data-name="نظام حجز مواعيد"><span class="box">✓</span> نظام حجز <span class="pr">+900</span></div>
+          <div class="feat" data-price="600" data-name="معرض صور"><span class="box">✓</span> معرض صور <span class="pr">+600</span></div>
+          <div class="feat" data-price="250" data-name="زر واتساب"><span class="box">✓</span> زر واتساب <span class="pr">+250</span></div>
+          <div class="feat" data-price="350" data-name="خريطة موقع"><span class="box">✓</span> خريطة <span class="pr">+350</span></div>
+          <div class="feat" data-price="1400" data-name="لغتين"><span class="box">✓</span> لغتين <span class="pr">+1,400</span></div>
+          <div class="feat" data-price="1800" data-name="لوحة تحكم"><span class="box">✓</span> لوحة تحكم <span class="pr">+1,800</span></div>
+          <div class="feat" data-price="800" data-name="تحسين SEO"><span class="box">✓</span> SEO <span class="pr">+800</span></div>
+          <div class="feat" data-price="1100" data-name="دومين + استضافة"><span class="box">✓</span> دومين <span class="pr">+1,100</span></div>
+        </div>
+      </div>
+      <div class="calc-group">
+        <div class="calc-label"><span class="n">4</span> سرعة التسليم</div>
+        <div class="opts" id="optSpeed">
+          <div class="opt on" data-mult="1" data-name="تسليم عادي">عادي<small>7-10 أيام</small></div>
+          <div class="opt" data-mult="1.25" data-name="تسليم سريع">سريع<small>+25%</small></div>
+          <div class="opt" data-mult="1.6" data-name="تسليم فوري">فوري<small>+60%</small></div>
+        </div>
+      </div>
+    </div>
+    <div class="summary reveal d1">
+      <h3>📋 ملخص الطلب</h3>
+      <div class="sum-rows" id="sumRows"><div class="sum-empty">اختر تفاصيل مشروعك</div></div>
+      <div class="sum-total"><span>الإجمالي التقديري</span><b><i>ج.م</i> <span class="num" id="totalPrice">3,500</span></b></div>
+      <div class="sum-note">* سعر تقديري قابل للتعديل بعد المراجعة</div>
+      <a href="#order" class="btn btn-primary" id="calcToOrder">متابعة للطلب <span class="btn-arrow">←</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== ORDER ==================== -->
+<section class="section" id="order">
+  <div class="section-head reveal">
+    <div class="section-eyebrow">اطلب مشروعك</div>
+    <h2 class="section-title">ابدأ رحلتك <em>خلال دقيقة</em></h2>
+    <p class="section-desc">اختر طريقة الطلب المفضلة لك — سريعة أو مفصلة.</p>
+  </div>
+
+  <div class="form-mode-toggle reveal" id="formModeToggle">
+    <button class="active" data-mode="advanced">⚡ نموذج متقدم (4 خطوات)</button>
+    <button data-mode="simple">📝 نموذج سريع</button>
+  </div>
+
+  <!-- ADVANCED FORM -->
+  <form class="form-shell reveal" id="form" novalidate>
+    <div style="position:absolute;left:-9999px;opacity:0;pointer-events:none" aria-hidden="true">
+      <input type="text" name="hpWebsite" id="hpWebsite" tabindex="-1" autocomplete="off">
+    </div>
+
+    <div class="form-top">
+      <div class="form-top-l">
+        <div class="form-logo">
+          <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+            <path d="M8 27 L8 13 Q8 11 10 11 Q12 11 12 13 L12 19 Q12 20 13 20 Q14 20 14 19 L14 13 Q14 11 16 11 L18 11 Q20 11 20 13 L20 19 Q20 20 21 20 Q22 20 22 19 L22 13 Q22 11 24 11 Q26 11 26 13 L26 27" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M8 31 Q 14 28.5, 20 31 T 32 31" fill="none" stroke="currentColor" stroke-width="1.6" opacity="0.75" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div><h3>طلب خدمة جديدة</h3><p>New Service Request</p></div>
+      </div>
+      <div class="form-step-counter">الخطوة <b id="stepNow">1</b> من <b>4</b></div>
+    </div>
+
+    <div class="steps" id="steps">
+      <div class="step active" data-step="1"><div class="step-num"><span class="num">1</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div><div class="step-lbl">نوع الطلب</div></div>
+      <div class="step" data-step="2"><div class="step-num"><span class="num">2</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div><div class="step-lbl">بياناتك</div></div>
+      <div class="step" data-step="3"><div class="step-num"><span class="num">3</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div><div class="step-lbl">التفاصيل</div></div>
+      <div class="step" data-step="4"><div class="step-num"><span class="num">4</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div><div class="step-lbl">المراجعة</div></div>
+    </div>
+
+    <div class="prog-wrap">
+      <div class="prog-track"><div class="prog-fill" id="progFill"></div></div>
+      <div class="prog-pct">الإنجاز <b id="progPct">25%</b></div>
+    </div>
+
+    <div class="form-body">
+      <!-- STEP 1 -->
+      <div class="step-pane active" data-pane="1">
+        <div class="pane-title">اختر <em>نوع</em> الطلب</div>
+        <div class="pane-sub">حدد الفئة الأقرب لاحتياجك.</div>
+        <div class="choice-grid" id="choiceGrid">
+          <div class="choice" data-value="موقع عيادة / مركز طبي"><div class="choice-ico">🩺</div><div class="choice-txt"><strong>موقع عيادة</strong><small>نظام حجز مواعيد + ملفات مرضى</small></div><div class="choice-check">✓</div></div>
+          <div class="choice" data-value="موقع صالون حلاقة"><div class="choice-ico">💈</div><div class="choice-txt"><strong>صالون حلاقة</strong><small>معرض + حجز مواعيد</small></div><div class="choice-check">✓</div></div>
+          <div class="choice" data-value="موقع مطعم / كافيه"><div class="choice-ico">🍽️</div><div class="choice-txt"><strong>مطعم / كافيه</strong><small>قائمة + طلب أونلاين</small></div><div class="choice-check">✓</div></div>
+          <div class="choice" data-value="متجر إلكتروني"><div class="choice-ico">🛍️</div><div class="choice-txt"><strong>متجر إلكتروني</strong><small>سلة شراء + دفع</small></div><div class="choice-check">✓</div></div>
+          <div class="choice" data-value="موقع شركة / خدمات"><div class="choice-ico">🏢</div><div class="choice-txt"><strong>شركة / خدمات</strong><small>واجهة احترافية + مدونة</small></div><div class="choice-check">✓</div></div>
+          <div class="choice" data-value="بورتفوليو شخصي"><div class="choice-ico">🎨</div><div class="choice-txt"><strong>بورتفوليو</strong><small>معرض أعمال شخصي</small></div><div class="choice-check">✓</div></div>
+        </div>
+        <input type="hidden" id="requestType" required>
+        <div class="field-err" id="requestTypeErr" style="margin-top:14px">⚠ اختر نوع الطلب للمتابعة</div>
+      </div>
+
+      <!-- STEP 2 -->
+      <div class="step-pane" data-pane="2">
+        <div class="pane-title">بياناتك <em>الأساسية</em></div>
+        <div class="pane-sub">معلومات التواصل حتى نردّ عليك بأسرع وقت.</div>
+        <div class="grid-2">
+          <div class="field" data-field="name">
+            <input type="text" id="name" placeholder=" " autocomplete="name" required>
+            <label for="name">الاسم الكامل</label><span class="field-ok">✓</span>
+            <div class="field-err">⚠ الاسم مطلوب (3 أحرف على الأقل)</div>
+          </div>
+          <div class="field" data-field="email">
+            <input type="email" id="email" placeholder=" " autocomplete="email" required style="direction:ltr;text-align:right">
+            <label for="email" style="right:18px">البريد الإلكتروني</label><span class="field-ok">✓</span>
+            <div class="field-err">⚠ البريد الإلكتروني غير صحيح</div>
+          </div>
+        </div>
+        <div class="grid-2">
+          <div class="field" data-field="phone">
+            <input type="tel" id="phone" placeholder=" " autocomplete="tel" required style="direction:ltr;text-align:right" maxlength="15">
+            <label for="phone" style="right:18px">رقم الهاتف</label><span class="field-ok">✓</span>
+            <div class="field-err">⚠ اكتب رقم موبايل مصري صحيح (11 رقم يبدأ بـ 010/011/012/015)</div>
+          </div>
+          <div class="field select-wrap" data-field="country">
+            <select id="country" required>
+              <option value="" disabled selected></option>
+              <option value="eg">مصر</option>
+              <option value="sa">السعودية</option>
+              <option value="ae">الإمارات</option>
+              <option value="jo">الأردن</option>
+              <option value="ma">المغرب</option>
+              <option value="other">أخرى</option>
+            </select>
+            <label for="country">الدولة</label>
+            <div class="field-err">⚠ اختر الدولة</div>
+          </div>
+        </div>
+        <div class="field" data-field="company">
+          <input type="text" id="company" placeholder=" " autocomplete="organization">
+          <label for="company">الشركة / الجهة (اختياري)</label>
+        </div>
+      </div>
+
+      <!-- STEP 3 -->
+      <div class="step-pane" data-pane="3">
+        <div class="pane-title">تفاصيل <em>الطلب</em></div>
+        <div class="pane-sub">كلما كانت التفاصيل أوضح، كان ردنا أدق.</div>
+        <div class="grid-2">
+          <div class="field select-wrap" data-field="budget">
+            <select id="budget" required>
+              <option value="" disabled selected></option>
+              <option value="<5k">أقل من 5,000 ج.م</option>
+              <option value="5-20k">5,000 - 20,000 ج.م</option>
+              <option value="20-50k">20,000 - 50,000 ج.م</option>
+              <option value=">50k">أكثر من 50,000 ج.م</option>
+              <option value="flexible">قابل للنقاش</option>
+            </select>
+            <label for="budget">الميزانية التقديرية</label>
+            <div class="field-err">⚠ اختر نطاق الميزانية</div>
+          </div>
+          <div class="field select-wrap" data-field="timeline">
+            <select id="timeline" required>
+              <option value="" disabled selected></option>
+              <option value="urgent">عاجل (خلال أيام)</option>
+              <option value="month">خلال شهر</option>
+              <option value="quarter">خلال 3 أشهر</option>
+              <option value="flexible">مرن</option>
+            </select>
+            <label for="timeline">الإطار الزمني</label>
+            <div class="field-err">⚠ اختر الإطار الزمني</div>
+          </div>
+        </div>
+        <div class="field" data-field="message">
+          <textarea id="message" placeholder=" " required></textarea>
+          <label for="message">اشرح طلبك بالتفصيل</label>
+          <div style="text-align:left;font-family:var(--mono);font-size:11.5px;color:var(--text-3);margin-top:6px">
+            <span id="msgCount">0</span> / 500 حرف
+          </div>
+          <div class="field-err">⚠ اكتب 20 حرفاً على الأقل</div>
+        </div>
+      </div>
+
+      <!-- STEP 4 -->
+      <div class="step-pane" data-pane="4">
+        <div class="pane-title">مراجعة <em>نهائية</em></div>
+        <div class="pane-sub">تأكد من بياناتك قبل الإرسال.</div>
+        <div class="summary-box" id="summary"></div>
+        <label style="display:flex;align-items:flex-start;gap:12px;cursor:pointer;font-size:14px;color:var(--text-2);line-height:1.7">
+          <input type="checkbox" id="agree" style="margin-top:5px;accent-color:var(--accent);width:18px;height:18px;flex:0 0 18px">
+          <span>أوافق على معالجة بياناتي وفقاً لسياسة الخصوصية.</span>
+        </label>
+        <div class="field-err" id="agreeErr" style="margin-top:10px">⚠ يجب الموافقة على الشروط</div>
+      </div>
+
+      <!-- SUCCESS -->
+      <div class="success-pane" id="success">
+        <div class="success-icon">✓</div>
+        <h2>تم استلام طلبك بنجاح</h2>
+        <p>شكراً لك. سنراجع الطلب ونتواصل معك خلال 24 ساعة.</p>
+        <div class="success-ref">
+          رقم الطلب: <b id="refNum">—</b>
+          <button type="button" id="copyRef" class="copy-btn" style="margin-right:10px">📋 نسخ</button>
+        </div>
+        <div class="success-actions">
+          <button type="button" class="btn btn-ghost" onclick="resetForm()">↻ طلب جديد</button>
+          <a href="#track" class="btn btn-primary">تتبّع الطلب <span class="btn-arrow">←</span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-foot" id="formFoot">
+      <button type="button" class="btn-nav" id="prevBtn" disabled>→ السابق</button>
+      <button type="button" class="btn-nav primary" id="nextBtn" disabled>التالي <span class="btn-arrow">←</span></button>
+    </div>
+  </form>
+
+  <!-- SIMPLE FORM -->
+  <div class="form-shell reveal" id="simpleFormShell" style="display:none">
+    <div class="form-top">
+      <div class="form-top-l">
+        <div class="form-logo">
+          <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+            <path d="M8 27 L8 13 Q8 11 10 11 Q12 11 12 13 L12 19 Q12 20 13 20 Q14 20 14 19 L14 13 Q14 11 16 11 L18 11 Q20 11 20 13 L20 19 Q20 20 21 20 Q22 20 22 19 L22 13 Q22 11 24 11 Q26 11 26 13 L26 27" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M8 31 Q 14 28.5, 20 31 T 32 31" fill="none" stroke="currentColor" stroke-width="1.6" opacity="0.75" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div><h3>طلب سريع</h3><p>Quick Request</p></div>
+      </div>
+    </div>
+    <form id="simpleOrderForm" class="simple-form" novalidate>
+      <div class="f-grid">
+        <div class="f-field"><label>الاسم الكامل <i>*</i></label><input type="text" name="name" placeholder="مثال: أحمد محمد" required></div>
+        <div class="f-field"><label>رقم الهاتف <i>*</i></label><input type="tel" name="phone" placeholder="01012345678" required maxlength="15"></div>
+        <div class="f-field"><label>البريد الإلكتروني <i>*</i></label><input type="email" name="email" placeholder="example@email.com" required></div>
+        <div class="f-field"><label>نوع المشروع <i>*</i></label>
+          <select name="type" required>
+            <option value="">— اختر —</option>
+            <option>موقع عيادة / مركز طبي</option>
+            <option>موقع صالون حلاقة</option>
+            <option>موقع مطعم / كافيه</option>
+            <option>متجر إلكتروني</option>
+            <option>موقع شركة / خدمات</option>
+            <option>بورتفوليو شخصي</option>
+            <option>أخرى</option>
+          </select>
+        </div>
+        <div class="f-field"><label>الميزانية</label>
+          <select name="budget">
+            <option value="">— اختر —</option>
+            <option>أقل من 3,000 ج.م</option>
+            <option>3,000 - 5,000 ج.م</option>
+            <option>5,000 - 10,000 ج.م</option>
+            <option>10,000 - 20,000 ج.م</option>
+            <option>أكثر من 20,000 ج.م</option>
+          </select>
+        </div>
+        <div class="f-field"><label>التكلفة التقديرية</label><input type="text" name="estimate" id="estimateField" readonly placeholder="—" style="cursor:not-allowed;opacity:.85"></div>
+        <div class="f-field full"><label>تفاصيل المشروع <i>*</i></label><textarea name="details" placeholder="أخبرنا أكثر عن مشروعك..." required></textarea></div>
+      </div>
+      <button type="submit" class="btn btn-primary">🚀 إرسال الطلب واستلام كود التتبّع</button>
+      <p class="form-note">🔒 بياناتك محفوظة بأمان ولن تُشارك مع أي طرف ثالث.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ==================== TRACK ==================== -->
+<section class="section" id="track">
+  <div class="section-head reveal">
+    <div class="section-eyebrow">تتبّع طلبك</div>
+    <h2 class="section-title">تابع مشروعك <em>لحظة بلحظة</em></h2>
+    <p class="section-desc">أدخل كود التتبّع الذي حصلت عليه عند إرسال طلبك.</p>
+  </div>
+  <div class="track-shell reveal">
+    <div class="track-input-wrap">
+      <input type="text" id="trackInput" placeholder="أدخل كود التتبّع (مثال: MRS-2026-A7K3)" maxlength="20" autocomplete="off">
+      <button class="btn btn-primary" id="trackBtn">🔍 تتبّع</button>
+    </div>
+    <div class="err-box" id="errBox">⚠️ لم نجد طلباً بهذا الكود.</div>
+    <div class="track-result" id="trackResult">
+      <div class="tr-card">
+        <div class="tr-head"><div><h4 id="trTitle">—</h4><p id="trSub">—</p></div><div class="tr-status" id="trStatus">—</div></div>
+        <div class="timeline" id="timeline"></div>
+        <div class="tr-info">
+          <div><small>الكود</small><b id="trCode">—</b></div>
+          <div><small>التاريخ</small><b id="trDate">—</b></div>
+          <div><small>النوع</small><b id="trType">—</b></div>
+          <div><small>التقدير</small><b id="trPrice">—</b></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FOOTER ==================== -->
+<footer>
+  <div class="f-top">
+    <div class="f-col">
+      <div class="brand" style="margin-bottom:18px">
+        <div class="brand-mark">
+          <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" width="22" height="22">
+            <path d="M8 27 L8 13 Q8 11 10 11 Q12 11 12 13 L12 19 Q12 20 13 20 Q14 20 14 19 L14 13 Q14 11 16 11 L18 11 Q20 11 20 13 L20 19 Q20 20 21 20 Q22 20 22 19 L22 13 Q22 11 24 11 Q26 11 26 13 L26 27" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M8 31 Q 14 28.5, 20 31 T 32 31" fill="none" stroke="currentColor" stroke-width="1.8" opacity="0.75" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="brand-name">MARS<em>A</em></div>
+      </div>
+      <p>شركة متخصصة في تصميم وتطوير المواقع الإلكترونية الاحترافية. نحوّل أفكارك إلى تجارب رقمية استثنائية.</p>
+    </div>
+    <div class="f-col">
+      <h5>روابط سريعة</h5>
+      <ul>
+        <li><a href="#home">الرئيسية</a></li>
+        <li><a href="#services">خدماتنا</a></li>
+        <li><a href="#calculator">الحاسبة</a></li>
+        <li><a href="#order">اطلب الآن</a></li>
+        <li><a href="#track">تتبّع طلبك</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <h5>خدماتنا</h5>
+      <ul>
+        <li><a href="#services">مواقع العيادات</a></li>
+        <li><a href="#services">صالونات الحلاقة</a></li>
+        <li><a href="#services">المطاعم</a></li>
+        <li><a href="#services">المتاجر</a></li>
+        <li><a href="#services">الشركات</a></li>
+      </ul>
+    </div>
+    <div class="f-col">
+      <h5>تواصل معنا</h5>
+      <ul>
+        <li><a href="tel:+201554910655">📞 0155 491 0655</a></li>
+        <li><a href="https://wa.me/201554910655" target="_blank">💬 رد سريع على واتساب</a></li>
+        <li><a>🌍 متاحون أونلاين في كل مكان</a></li>
+        <li><a>🕐 السبت - الخميس: 9ص - 6م</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="f-bottom">
+    <p>© <span id="year" class="mono"></span> جميع الحقوق محفوظة لـ <b>MARSA Agency</b></p>
+    <p>صُنع بـ <span style="color:var(--rose)">♥</span> في مصر — <span class="mono">v3.0</span></p>
+  </div>
+</footer>
+
+<!-- ==================== WHATSAPP ==================== -->
+<a id="waBtn" href="#" target="_blank" rel="noopener noreferrer" aria-label="واتساب">
+  <span class="wa-badge"></span>
+  <span class="wa-ico">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </span>
+  <span class="wa-txt">تواصل واتساب</span>
+</a>
+
+<!-- ==================== TOASTS ==================== -->
+<div id="toastWrap"></div>
+
+<!-- ==================== SUCCESS MODAL ==================== -->
+<div class="modal" id="successModal">
+  <div class="modal-box">
+    <div class="modal-close" id="modalClose">✕</div>
+    <div class="ok-circle">✓</div>
+    <h3>تم استلام طلبك بنجاح!</h3>
+    <p>احتفظ بكود التتبّع — ستحتاجه لمتابعة مشروعك.</p>
+    <div class="code-box">
+      <small>TRACKING CODE</small>
+      <div class="code-val num" id="newCode">MRS-0000-XXXX</div>
+      <button class="copy-btn" id="copyCode" type="button">📋 نسخ الكود</button>
+    </div>
+    <div class="warn">⚠️ احفظ هذا الكود جيداً — يمكنك تصويره أو إرساله لنفسك.</div>
+    <div class="modal-actions">
+      <a class="btn btn-primary" id="waSend" target="_blank">📤 إرسال على واتساب</a>
+      <button class="btn btn-ghost" id="goTrack" type="button">🔍 تتبّع</button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== ADMIN LOGIN ==================== -->
+<div class="modal" id="loginModal">
+  <div class="modal-box" style="max-width:440px">
+    <div class="modal-close" id="loginClose">✕</div>
+    <div class="ok-circle" style="font-size:32px">🔐</div>
+    <h3>دخول لوحة التحكم</h3>
+    <p>هذه الصفحة مخصصة لأدمن MARSA فقط</p>
+    <div class="f-field"><label>البريد الإلكتروني</label><input type="email" id="loginEmail" placeholder="admin@example.com" autocomplete="username"></div>
+    <div class="f-field"><label>كلمة المرور</label><input type="password" id="loginPass" placeholder="••••••••" autocomplete="current-password"></div>
+    <div class="err-box" id="loginErr" style="margin-top:0;margin-bottom:14px">⚠️ بيانات الدخول غير صحيحة</div>
+    <button class="btn btn-primary" id="loginBtn" type="button" style="width:100%">دخول</button>
+  </div>
+</div>
+
+<!-- ==================== ORDER DETAILS MODAL ==================== -->
+<div class="od-modal" id="odModal">
+  <div class="od-box">
+    <div class="od-head">
+      <h3>📋 تفاصيل الطلب</h3>
+      <button class="modal-close" style="position:static;width:34px;height:34px" id="odModalClose">✕</button>
+    </div>
+    <div class="od-code-box">
+      <b id="odCode">—</b>
+      <button class="od-copy" id="odCopyBtn" type="button">📋 نسخ</button>
+    </div>
+    <div id="odBody"></div>
+    <div class="od-buttons">
+      <a class="wa" id="odWa" target="_blank">💬 واتساب</a>
+      <a class="mail" id="odMail">✉️ إيميل</a>
+      <a class="tel" id="odTel">📞 اتصال</a>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== ADMIN PANEL ==================== -->
+<div id="adminPanel">
+  <div class="adm-head">
+    <h3>🛡️ لوحة تحكم MARSA <span>ADMIN</span></h3>
+    <div style="display:flex;gap:11px;align-items:center;flex-wrap:wrap">
+      <span class="adm-user" id="admUser">—</span>
+      <div class="adm-actions">
+        <button class="adm-btn" id="admExport">⬇️ تصدير CSV</button>
+        <button class="adm-btn" id="admRefresh">🔄 تحديث</button>
+        <button class="adm-btn danger" id="admClear">🗑️ حذف الكل</button>
+        <button class="adm-btn" id="admClose">✕ خروج</button>
+      </div>
+    </div>
+  </div>
+  <div class="adm-body">
+    <div class="adm-stats" id="admStats"></div>
+    <div class="adm-table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>الكود</th><th>الاسم</th><th class="hide-m">الهاتف</th>
+            <th class="hide-m">البريد</th><th>النوع</th>
+            <th class="hide-m">التقدير</th><th>الحالة</th>
+            <th class="hide-m">التاريخ</th><th></th>
+          </tr>
+        </thead>
+        <tbody id="admTbody"></tbody>
+      </table>
+      <div class="adm-empty" id="admEmpty"><div>📭</div><p>لا توجد طلبات حتى الآن</p></div>
+      <div class="loading-inline" id="admLoading"><div class="spinner"></div><p>جارٍ تحميل الطلبات...</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SCRIPTS ==================== -->
+<script type="module" src="js/firebase-config.js"></script>
+<script type="module" src="js/app.js"></script>
+<script type="module" src="js/admin.js"></script>
+
+</body>
+</html>
