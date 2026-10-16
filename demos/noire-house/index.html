@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" id="htmlRoot">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="NOIRÉ HOUSE — صالون حلاقة وعناية رجالية فاخرة في القاهرة الجديدة. مش مجرد حلاقة، دي طريقتك في الظهور.">
+<meta name="theme-color" content="#0B0B0D">
+<title>NOIRÉ HOUSE — Luxury Barbershop & Grooming</title>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Tajawal:wght@300;400;500;700;800;900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+<!-- Favicon -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✂️</text></svg>">
+
+<!-- Styles -->
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ==================== LOADER ==================== -->
+<div id="loader">
+  <div class="loader-content">
+    <div class="loader-logo">
+      <span class="loader-monogram">N</span>
+    </div>
+    <div class="loader-name">NOIRÉ <em>HOUSE</em></div>
+    <div class="loader-tagline">LUXURY BARBERSHOP</div>
+    <div class="loader-line"><span id="loadBar"></span></div>
+  </div>
+</div>
+
+<!-- ==================== NAV ==================== -->
+<nav class="nav" id="nav">
+  <a class="brand" href="#hero">
+    <div class="brand-mark">
+      <span>N</span>
+    </div>
+    <div class="brand-text">
+      <b>NOIRÉ <em>HOUSE</em></b>
+      <small data-i18n="brand.sub">Luxury Barbershop</small>
+    </div>
+  </a>
+
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#services" data-i18n="nav.services">الخدمات</a></li>
+    <li><a href="#about" data-i18n="nav.about">من نحن</a></li>
+    <li><a href="#gallery" data-i18n="nav.gallery">معرض الأعمال</a></li>
+    <li><a href="#team" data-i18n="nav.team">الفريق</a></li>
+    <li><a href="#offers" data-i18n="nav.offers">العروض</a></li>
+    <li><a href="#contact" data-i18n="nav.contact">الموقع</a></li>
+  </ul>
+
+  <div class="nav-actions">
+    <button class="lang-toggle" id="langToggle" aria-label="Change Language">
+      <span class="lang-current" id="langCurrent">EN</span>
+    </button>
+    <button class="btn btn-gold nav-cta" id="navBookBtn" data-i18n="nav.book">احجز موعدك</button>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-overlay" id="navOverlay"></div>
+
+<!-- ==================== HERO ==================== -->
+<section class="hero" id="hero">
+  <div class="hero-bg">
+    <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=1920&q=80" alt="Barbershop Interior" loading="eager">
+    <div class="hero-overlay"></div>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow reveal">
+      <span class="hero-line"></span>
+      <span data-i18n="hero.eyebrow">القاهرة الجديدة · منذ 2018</span>
+      <span class="hero-line"></span>
+    </div>
+
+    <h1 class="hero-title reveal d1" data-i18n-html="hero.title">
+      مش مجرد حلاقة.<br>
+      <em>دي طريقتك في الظهور.</em>
+    </h1>
+
+    <p class="hero-sub reveal d2" data-i18n="hero.sub">
+      دقة في كل تفصيلة، عناية بكل شعرة. تجربة حلاقة راقية في مساحة هادئة، 
+      بأدوات احترافية ولمسة شخصية من أفضل الحلاقين في المدينة.
+    </p>
+
+    <div class="hero-actions reveal d3">
+      <button class="btn btn-gold btn-lg" id="heroBookBtn" data-i18n="hero.cta1">
+        احجز موعدك <span class="btn-arrow">←</span>
+      </button>
+      <a href="#services" class="btn btn-ghost btn-lg" data-i18n="hero.cta2">
+        اكتشف خدماتنا
+      </a>
+    </div>
+
+    <div class="hero-info reveal d4">
+      <div class="hero-info-item">
+        <span class="hi-num">★ 4.9</span>
+        <span class="hi-label" data-i18n="hero.info1">تقييم العملاء</span>
+      </div>
+      <div class="hero-info-divider"></div>
+      <div class="hero-info-item">
+        <span class="hi-num">+2,500</span>
+        <span class="hi-label" data-i18n="hero.info2">عميل راضٍ</span>
+      </div>
+      <div class="hero-info-divider"></div>
+      <div class="hero-info-item">
+        <span class="hi-num">6</span>
+        <span class="hi-label" data-i18n="hero.info3">سنوات خبرة</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-indicator">
+    <span></span>
+    <small data-i18n="hero.scroll">اكتشف</small>
+  </div>
+</section>
+
+<!-- ==================== MARQUEE ==================== -->
+<div class="marquee">
+  <div class="marquee-track">
+    <div class="marquee-item">
+      <span>✦</span> Premium Grooming <span>✦</span> Expert Barbers <span>✦</span> Luxury Experience <span>✦</span> Since 2018 <span>✦</span> New Cairo
+    </div>
+    <div class="marquee-item">
+      <span>✦</span> Premium Grooming <span>✦</span> Expert Barbers <span>✦</span> Luxury Experience <span>✦</span> Since 2018 <span>✦</span> New Cairo
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SERVICES ==================== -->
+<section class="section" id="services">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-eyebrow" data-i18n="services.eyebrow">خدماتنا</div>
+      <h2 class="section-title" data-i18n-html="services.title">
+        خدمات مصممة <em>لك</em>
+      </h2>
+      <p class="section-desc" data-i18n="services.desc">
+        كل خدمة عندنا بتتعمل باحترافية وأدوات فاخرة. اختر اللي يناسبك واحنا نتولى الباقي.
+      </p>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-img">
+          <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=600&q=80" alt="Classic Haircut" loading="lazy">
+        </div>
+        <div class="service-body">
+          <div class="service-head">
+            <h3 data-i18n="service.1.name">Classic Haircut</h3>
+            <span class="service-price">250 <small>ج.م</small></span>
+          </div>
+          <p class="service-en">Classic Haircut</p>
+          <p data-i18n="service.1.desc">
+            قصة كلاسيكية دقيقة بأحدث الأدوات. تشمل الغسيل والتصفيف ولمسة نهائية.
+          </p>
+          <div class="service-meta">
+            <span class="service-time">⏱ <span data-i18n="service.1.time">30 دقيقة</span></span>
+            <button class="service-btn" data-service="Classic Haircut" data-i18n="service.book">احجز ←</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card reveal d1">
+        <div class="service-img">
+          <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=600&q=80" alt="Haircut & Beard" loading="lazy">
+        </div>
+        <div class="service-body">
+          <div class="service-head">
+            <h3 data-i18n="service.2.name">Haircut & Beard</h3>
+            <span class="service-price">350 <small>ج.م</small></span>
+          </div>
+          <p class="service-en">Haircut & Beard</p>
+          <p data-i18n="service.2.desc">
+            قصة كاملة + تشذيب لحية وتحديدها. تجربة متكاملة للمظهر الرجالي الأنيق.
+          </p>
+          <div class="service-meta">
+            <span class="service-time">⏱ <span data-i18n="service.2.time">45 دقيقة</span></span>
+            <button class="service-btn" data-service="Haircut & Beard" data-i18n="service.book">احجز ←</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card reveal d2">
+        <div class="service-img">
+          <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=600&q=80" alt="Beard Sculpting" loading="lazy">
+        </div>
+        <div class="service-body">
+          <div class="service-head">
+            <h3 data-i18n="service.3.name">Beard Sculpting</h3>
+            <span class="service-price">180 <small>ج.م</small></span>
+          </div>
+          <p class="service-en">Beard Sculpting</p>
+          <p data-i18n="service.3.desc">
+            تحديد لحية احترافي بأدوات دقيقة، مع عناية كاملة بالبشرة والزيوت الطبيعية.
+          </p>
+          <div class="service-meta">
+            <span class="service-time">⏱ <span data-i18n="service.3.time">20 دقيقة</span></span>
+            <button class="service-btn" data-service="Beard Sculpting" data-i18n="service.book">احجز ←</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card reveal d3">
+        <div class="service-img">
+          <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=600&q=80" alt="Royal Grooming" loading="lazy">
+        </div>
+        <div class="service-body">
+          <div class="service-head">
+            <h3 data-i18n="service.4.name">Royal Grooming</h3>
+            <span class="service-price">550 <small>ج.م</small></span>
+          </div>
+          <p class="service-en">Royal Grooming</p>
+          <p data-i18n="service.4.desc">
+            التجربة الملكية الكاملة: قصة + لحية + عناية بالوجه + مساج + مشروب مجاني.
+          </p>
+          <div class="service-meta">
+            <span class="service-time">⏱ <span data-i18n="service.4.time">60 دقيقة</span></span>
+            <button class="service-btn" data-service="Royal Grooming" data-i18n="service.book">احجز ←</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== BEFORE / AFTER ==================== -->
+<section class="section ba-section" id="before-after">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-eyebrow" data-i18n="ba.eyebrow">قبل وبعد</div>
+      <h2 class="section-title" data-i18n-html="ba.title">
+        التحول <em>الحقيقي</em>
+      </h2>
+      <p class="section-desc" data-i18n="ba.desc">
+        اسحب المؤشر لترى الفرق بنفسك
+      </p>
+    </div>
+
+    <div class="ba-container reveal" id="baContainer">
+      <div class="ba-image ba-before" id="baBefore" style="background-image:url('https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=1400&q=80')"></div>
+      <div class="ba-image ba-after" id="baAfter" style="background-image:url('https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=1400&q=80')"></div>
+      <div class="ba-label ba-label-before" data-i18n="ba.before">قبل</div>
+      <div class="ba-label ba-label-after" data-i18n="ba.after">بعد</div>
+      <div class="ba-handle" id="baHandle"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== ABOUT ==================== -->
+<section class="section section-dark" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-media reveal">
+        <img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=800&q=80" alt="NOIRÉ HOUSE" loading="lazy">
+        <div class="about-badge">
+          <span class="badge-num">6+</span>
+          <span class="badge-label" data-i18n="about.badge">سنوات خبرة</span>
+        </div>
+      </div>
+
+      <div class="about-content reveal d1">
+        <div class="section-eyebrow" data-i18n="about.eyebrow">من نحن</div>
+        <h2 class="section-title" data-i18n-html="about.title">
+          مش مجرد صالون.<br>ده <em>بيتك الثاني</em>.
+        </h2>
+        <p data-i18n="about.p1">
+          بدأت رحلتنا في 2018 بفكرة بسيطة: نقدم تجربة حلاقة مختلفة تماماً عن السائد. 
+          مكان هادي، موسيقى راقية، وأدوات احترافية، وكل تفصيلة بتتعمل بعناية.
+        </p>
+        <p data-i18n="about.p2">
+          النهاردة، NOIRÉ HOUSE بقت وجهة الرجال الباحثين عن الأناقة والدقة في القاهرة الجديدة. 
+          بنستقبل أكثر من 500 عميل شهرياً، وكل واحد فيهم بياخد تجربة شخصية مخصصة.
+        </p>
+
+        <div class="about-features">
+          <div class="about-feature">
+            <span class="af-icon">✦</span>
+            <div>
+              <b data-i18n="about.f1.title">نظافة مطلقة</b>
+              <small data-i18n="about.f1.sub">أدوات معقمة لكل عميل</small>
+            </div>
+          </div>
+          <div class="about-feature">
+            <span class="af-icon">✦</span>
+            <div>
+              <b data-i18n="about.f2.title">حلاقون محترفون</b>
+              <small data-i18n="about.f2.sub">خبرة +10 سنوات</small>
+            </div>
+          </div>
+          <div class="about-feature">
+            <span class="af-icon">✦</span>
+            <div>
+              <b data-i18n="about.f3.title">اهتمام بالتفاصيل</b>
+              <small data-i18n="about.f3.sub">كل قصة عمل فني</small>
+            </div>
+          </div>
+          <div class="about-feature">
+            <span class="af-icon">✦</span>
+            <div>
+              <b data-i18n="about.f4.title">أجواء راقية</b>
+              <small data-i18n="about.f4.sub">مشروب مجاني + مساج</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== GALLERY ==================== -->
+<section class="section" id="gallery">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-eyebrow" data-i18n="gallery.eyebrow">معرض الأعمال</div>
+      <h2 class="section-title" data-i18n-html="gallery.title">
+        شغلنا <em>بيكلم عن نفسه</em>
+      </h2>
+      <p class="section-desc" data-i18n="gallery.desc">
+        كل صورة دي قصة عميل خرج من عندنا وهو مبسوط. اضغط على أي صورة لمشاهدتها بحجم كامل.
+      </p>
+    </div>
+
+    <div class="gallery-filters reveal">
+      <button class="gallery-filter active" data-filter="all" data-i18n="gallery.all">الكل</button>
+      <button class="gallery-filter" data-filter="haircut" data-i18n="gallery.haircut">قصات</button>
+      <button class="gallery-filter" data-filter="beard" data-i18n="gallery.beard">لحية</button>
+      <button class="gallery-filter" data-filter="interior" data-i18n="gallery.interior">المكان</button>
+    </div>
+
+    <div class="gallery-grid">
+      <div class="gallery-item reveal" data-category="haircut" data-src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=1400&q=80">
+        <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=600&q=80" alt="Haircut" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-zoom">+</span></div>
+      </div>
+      <div class="gallery-item reveal d1" data-category="beard" data-src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1400&q=80">
+        <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=600&q=80" alt="Beard" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-zoom">+</span></div>
+      </div>
+      <div class="gallery-item reveal d2" data-category="interior" data-src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=1400&q=80">
+        <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=600&q=80" alt="Interior" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-zoom">+</span></div>
+      </div>
+      <div class="gallery-item reveal" data-category="haircut" data-src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=1400&q=80">
+        <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=600&q=80" alt="Haircut" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-zoom">+</span></div>
+      </div>
+      <div class="gallery-item reveal d1" data-category="interior" data-src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=1400&q=80">
+        <img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=600&q=80" alt="Interior" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-zoom">+</span></div>
+      </div>
+      <div class="gallery-item reveal d2" data-category="beard" data-src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=1400&q=80">
+        <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=600&q=80" alt="Beard" loading="lazy">
+        <div class="gallery-overlay"><span class="gallery-zoom">+</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== TEAM ==================== -->
+<section class="section section-dark" id="team">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-eyebrow" data-i18n="team.eyebrow">فريق العمل</div>
+      <h2 class="section-title" data-i18n-html="team.title">
+        الحلاقون <em>المحترفون</em>
+      </h2>
+      <p class="section-desc" data-i18n="team.desc">
+        فريق مختار بعناية من أفضل الحلاقين في مصر. كل واحد ليه تخصص مختلف.
+      </p>
+    </div>
+
+    <div class="team-grid">
+      <div class="team-card reveal">
+        <div class="team-img">
+          <img src="https://images.unsplash.com/photo-1618077360395-f3068be8e001?w=500&q=80" alt="Ahmed" loading="lazy">
+        </div>
+        <div class="team-body">
+          <h3>Ahmed Hassan</h3>
+          <p class="team-role" data-i18n="team.1.role">Senior Barber · مدير الصالون</p>
+          <p data-i18n="team.1.desc">
+            خبرة 12 سنة في القصات الكلاسيكية والحديثة. متخصص في القصات الفيد.
+          </p>
+        </div>
+      </div>
+
+      <div class="team-card reveal d1">
+        <div class="team-img">
+          <img src="https://images.unsplash.com/photo-1600486913747-55e5470d6f40?w=500&q=80" alt="Omar" loading="lazy">
+        </div>
+        <div class="team-body">
+          <h3>Omar Khaled</h3>
+          <p class="team-role" data-i18n="team.2.role">Beard Specialist · خبير لحية</p>
+          <p data-i18n="team.2.desc">
+            متخصص في تحديد وتشذيب اللحية. حاصل على شهادات دولية في الحلاقة.
+          </p>
+        </div>
+      </div>
+
+      <div class="team-card reveal d2">
+        <div class="team-img">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&q=80" alt="Youssef" loading="lazy">
+        </div>
+        <div class="team-body">
+          <h3>Youssef Adel</h3>
+          <p class="team-role" data-i18n="team.3.role">Grooming Expert · خبير عناية</p>
+          <p data-i18n="team.3.desc">
+            متخصص في العناية الشاملة بالوجه والبشرة. لمسة فنية في كل تفصيلة.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== OFFERS ==================== -->
+<section class="section" id="offers">
+  <div class="container">
+    <div class="offer-card reveal">
+      <div class="offer-badge" data-i18n="offer.badge">عرض محدود</div>
+      <div class="offer-grid">
+        <div class="offer-media">
+          <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=800&q=80" alt="Grooming Experience" loading="lazy">
+        </div>
+        <div class="offer-content">
+          <div class="section-eyebrow" data-i18n="offer.eyebrow">الباقة المميزة</div>
+          <h2 class="offer-title" data-i18n-html="offer.title">
+            Grooming <em>Experience</em>
+          </h2>
+          <p class="offer-desc" data-i18n="offer.desc">
+            تجربة كاملة بتشمل قصة + لحية + عناية بالوجه + مساج + مشروب. كل ده بسعر خاص.
+          </p>
+
+          <ul class="offer-list">
+            <li data-i18n="offer.item1">✓ قصة شعر كاملة بأحدث الأدوات</li>
+            <li data-i18n="offer.item2">✓ تشذيب وتحديد لحية احترافي</li>
+            <li data-i18n="offer.item3">✓ عناية كاملة بالوجه والبشرة</li>
+            <li data-i18n="offer.item4">✓ مساج للرأس والأكتاف (15 دقيقة)</li>
+            <li data-i18n="offer.item5">✓ مشروب مجاني من اختيارك</li>
+          </ul>
+
+          <div class="offer-pricing">
+            <div class="offer-price-old">700 ج.م</div>
+            <div class="offer-price-new">
+              <span class="num">499</span>
+              <small>ج.م</small>
+            </div>
+            <div class="offer-discount" data-i18n="offer.save">وفّر 200 ج.م</div>
+          </div>
+
+          <div class="offer-meta">
+            <span class="offer-valid" data-i18n="offer.valid">ساري حتى نهاية الشهر</span>
+          </div>
+
+          <button class="btn btn-gold btn-lg" id="offerBookBtn" data-i18n="offer.cta">
+            احجز العرض الآن <span class="btn-arrow">←</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== REVIEWS ==================== -->
+<section class="section section-dark" id="reviews">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-eyebrow" data-i18n="reviews.eyebrow">آراء العملاء</div>
+      <h2 class="section-title" data-i18n-html="reviews.title">
+        العملاء <em>بيقولوا إيه؟</em>
+      </h2>
+      <p class="section-desc" data-i18n="reviews.desc">
+        نعتذر، التقييمات معروضة كعينات توضيحية فقط حتى تتوفر تقييمات حقيقية موثقة من عملائنا.
+      </p>
+    </div>
+
+    <div class="reviews-grid">
+      <div class="review-card reveal">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text" data-i18n="review.1.text">
+          "أفضل تجربة حلاقة في مصر. المكان راقي جداً والحلاق فاهم شغله. مش هروح مكان تاني."
+        </p>
+        <div class="review-author">
+          <div class="review-avatar">م</div>
+          <div>
+            <b data-i18n="review.1.name">محمد ع.</b>
+            <small data-i18n="review.1.label">عينة توضيحية</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card reveal d1">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text" data-i18n="review.2.text">
+          "الاهتمام بالتفاصيل خرافي. حتى المشروب والمساج بيعملوا فرق كبير. تجربة تستاهل."
+        </p>
+        <div class="review-author">
+          <div class="review-avatar">أ</div>
+          <div>
+            <b data-i18n="review.2.name">أحمد ك.</b>
+            <small data-i18n="review.2.label">عينة توضيحية</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card reveal d2">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text" data-i18n="review.3.text">
+          "جربت أماكن كتير، بس NOIRÉ HOUSE مختلف. نظافة، احترافية، وأسعار معقولة."
+        </p>
+        <div class="review-author">
+          <div class="review-avatar">خ</div>
+          <div>
+            <b data-i18n="review.3.name">خالد م.</b>
+            <small data-i18n="review.2.label">عينة توضيحية</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== CONTACT ==================== -->
+<section class="section" id="contact">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-eyebrow" data-i18n="contact.eyebrow">زورنا</div>
+      <h2 class="section-title" data-i18n-html="contact.title">
+        احنا <em>في انتظارك</em>
+      </h2>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <b data-i18n="contact.address.title">العنوان</b>
+            <p data-i18n="contact.address">التجمع الخامس، القاهرة الجديدة — شارع التسعين الشمالي</p>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">🕐</div>
+          <div>
+            <b data-i18n="contact.hours.title">ساعات العمل</b>
+            <p data-i18n="contact.hours">السبت - الخميس: 10 صباحاً - 11 مساءً<br>الجمعة: 2 مساءً - 12 صباحاً</p>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div>
+            <b data-i18n="contact.phone.title">تواصل معنا</b>
+            <p><a href="tel:+201000000000" dir="ltr">+20 100 000 0000</a></p>
+            <p><a href="https://wa.me/201000000000" target="_blank" data-i18n="contact.whatsapp">راسلنا على واتساب</a></p>
+          </div>
+        </div>
+
+        <button class="btn btn-gold btn-lg" id="contactBookBtn" data-i18n="contact.cta">
+          احجز موعدك الآن <span class="btn-arrow">←</span>
+        </button>
+      </div>
+
+      <div class="contact-map reveal d1">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3454.833!2d31.4913!3d30.0079!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzDCsDAwJzI4LjUiTiAzMcKwMjknMjguNyJF!5e0!3m2!1sen!2seg!4v1234567890"
+          width="100%" height="100%" style="border:0;filter:grayscale(100%) invert(92%) contrast(85%);" 
+          allowfullscreen="" loading="lazy">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <div class="brand-mark">
+            <span>N</span>
+          </div>
+          <div class="brand-text">
+            <b>NOIRÉ <em>HOUSE</em></b>
+            <small>Luxury Barbershop</small>
+          </div>
+        </div>
+        <p data-i18n="footer.tagline">
+          مش مجرد حلاقة. دي طريقتك في الظهور.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h5 data-i18n="footer.links">روابط سريعة</h5>
+        <ul>
+          <li><a href="#services" data-i18n="nav.services">الخدمات</a></li>
+          <li><a href="#about" data-i18n="nav.about">من نحن</a></li>
+          <li><a href="#gallery" data-i18n="nav.gallery">معرض الأعمال</a></li>
+          <li><a href="#team" data-i18n="nav.team">الفريق</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5 data-i18n="footer.contact">تواصل</h5>
+        <ul>
+          <li><a href="tel:+201000000000" dir="ltr">+20 100 000 0000</a></li>
+          <li><a href="https://wa.me/201000000000" target="_blank">WhatsApp</a></li>
+          <li><a href="#" data-i18n="footer.address">التجمع الخامس، القاهرة</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5 data-i18n="footer.social">تابعنا</h5>
+        <ul>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">TikTok</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© <span id="year"></span> NOIRÉ HOUSE. <span data-i18n="footer.rights">جميع الحقوق محفوظة.</span></p>
+      <p class="footer-credit">
+        <span data-i18n="footer.made">Designed by</span> <b>MARSA Agency</b>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<!-- ==================== WHATSAPP FLOAT ==================== -->
+<button class="wa-float" id="waFloat" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</button>
+
+<!-- ==================== BOOKING MODAL ==================== -->
+<div class="modal" id="bookingModal">
+  <div class="modal-box">
+    <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
+
+    <div class="modal-head">
+      <div class="modal-icon">📅</div>
+      <h3 data-i18n="modal.title">احجز موعدك</h3>
+      <p data-i18n="modal.sub">املأ البيانات وهنتواصل معاك لتأكيد الموعد</p>
+    </div>
+
+    <form id="bookingForm" novalidate>
+      <div class="field">
+        <label for="bkName" data-i18n="modal.name">الاسم الكامل *</label>
+        <input type="text" id="bkName" name="name" placeholder="مثال: أحمد محمد" required>
+        <div class="field-err" data-i18n="modal.nameErr">من فضلك أدخل اسمك</div>
+      </div>
+
+      <div class="field">
+        <label for="bkPhone" data-i18n="modal.phone">رقم الهاتف *</label>
+        <input type="tel" id="bkPhone" name="phone" placeholder="01xxxxxxxxx" required maxlength="15" style="direction:ltr;text-align:right">
+        <div class="field-err" data-i18n="modal.phoneErr">أدخل رقم موبايل صحيح (11 رقم)</div>
+      </div>
+
+      <div class="field">
+        <label for="bkService" data-i18n="modal.service">الخدمة المطلوبة *</label>
+        <select id="bkService" name="service" required>
+          <option value="" data-i18n="modal.selectService">— اختر الخدمة —</option>
+          <option value="Classic Haircut">Classic Haircut — 250 ج.م</option>
+          <option value="Haircut & Beard">Haircut &amp; Beard — 350 ج.م</option>
+          <option value="Beard Sculpting">Beard Sculpting — 180 ج.م</option>
+          <option value="Royal Grooming">Royal Grooming — 550 ج.م</option>
+          <option value="Grooming Experience">Grooming Experience — 499 ج.م</option>
+        </select>
+        <div class="field-err" data-i18n="modal.serviceErr">اختر الخدمة</div>
+      </div>
+
+      <div class="field">
+        <label for="bkBarber" data-i18n="modal.barber">الحلاق المفضل (اختياري)</label>
+        <select id="bkBarber" name="barber">
+          <option value="" data-i18n="modal.anyBarber">— أي حلاق متاح —</option>
+          <option value="Ahmed Hassan">Ahmed Hassan</option>
+          <option value="Omar Khaled">Omar Khaled</option>
+          <option value="Youssef Adel">Youssef Adel</option>
+        </select>
+      </div>
+
+      <div class="field-2col">
+        <div class="field">
+          <label for="bkDate" data-i18n="modal.date">التاريخ المفضل *</label>
+          <input type="date" id="bkDate" name="date" required>
+          <div class="field-err" data-i18n="modal.dateErr">اختر تاريخ</div>
+        </div>
+
+        <div class="field">
+          <label for="bkTime" data-i18n="modal.time">الفترة المفضلة *</label>
+          <select id="bkTime" name="time" required>
+            <option value="" data-i18n="modal.selectTime">— اختر الفترة —</option>
+            <option value="صباحاً (10ص - 12م)" data-i18n="modal.morning">صباحاً (10ص - 12م)</option>
+            <option value="بعد الظهر (12م - 5م)" data-i18n="modal.afternoon">بعد الظهر (12م - 5م)</option>
+            <option value="مساءً (5م - 9م)" data-i18n="modal.evening">مساءً (5م - 9م)</option>
+            <option value="ليلاً (9م - 11م)" data-i18n="modal.night">ليلاً (9م - 11م)</option>
+          </select>
+          <div class="field-err" data-i18n="modal.timeErr">اختر الفترة</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="bkNotes" data-i18n="modal.notes">ملاحظات إضافية (اختياري)</label>
+        <textarea id="bkNotes" name="notes" placeholder="أي تفاصيل تود إخبارنا بها..." rows="3"></textarea>
+      </div>
+
+      <div class="modal-note" data-i18n="modal.note">
+        ⓘ الموعد لا يصبح مؤكدًا إلا بعد رد الصالون عليك
+      </div>
+
+      <button type="submit" class="btn btn-gold btn-lg btn-full" id="submitBooking">
+        <span data-i18n="modal.submit">تأكيد الحجز عبر واتساب</span> <span class="btn-arrow">←</span>
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- ==================== LIGHTBOX ==================== -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close">✕</button>
+  <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous">‹</button>
+  <img src="" alt="" id="lightboxImg">
+  <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next">›</button>
+</div>
+
+<!-- ==================== TOASTS ==================== -->
+<div id="toastWrap"></div>
+
+<!-- ==================== SCRIPT ==================== -->
+<script src="js/app.js"></script>
+
+</body>
+</html>
