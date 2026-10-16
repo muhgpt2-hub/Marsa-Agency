@@ -299,6 +299,22 @@ td select option{background:#0a0c16}
 .adm-empty{padding:70px 20px;text-align:center;color:var(--muted)}
 .adm-empty div{font-size:52px;margin-bottom:16px;opacity:.5}
 .loading-inline{text-align:center;padding:60px 20px;color:var(--muted)}
+/* Details Modal */
+.order-details-box{max-width:640px;text-align:right}
+.od-section{margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid var(--stroke)}
+.od-section:last-child{border:none;margin-bottom:0;padding-bottom:0}
+.od-label{font-size:11.5px;color:var(--muted);font-weight:700;letter-spacing:1px;margin-bottom:6px;text-transform:uppercase}
+.od-value{font-size:15.5px;font-weight:600;color:#fff;line-height:1.7;word-break:break-word}
+.od-value a{color:#7fe4ff;text-decoration:none}
+.od-value a:hover{text-decoration:underline}
+.od-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px}
+.od-details{background:rgba(109,94,252,.08);border:1px solid rgba(109,94,252,.25);border-radius:14px;padding:18px;margin-top:8px}
+.od-details p{color:#dfe4f0;font-size:14.5px;line-height:1.85;white-space:pre-wrap;margin:0}
+.od-actions{display:flex;gap:10px;margin-top:24px;flex-wrap:wrap}
+.od-actions .btn{flex:1;min-width:140px;padding:13px}
+.row-click{cursor:pointer;transition:background .25s}
+.row-click:hover{background:rgba(109,94,252,.08)}
+@media(max-width:520px){.od-grid{grid-template-columns:1fr}}
 .spinner{width:38px;height:38px;border:3px solid rgba(109,94,252,.2);border-top-color:#6d5efc;border-radius:50%;margin:0 auto 16px;animation:spin 1s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 @media(max-width:1080px){
@@ -541,7 +557,7 @@ td select option{background:#0a0c16}
       <form id="orderForm" novalidate>
         <div class="f-grid">
           <div class="f-field"><label>الاسم الكامل <i>*</i></label><input type="text" name="name" placeholder="مثال: أحمد محمد" required></div>
-          <div class="f-field"><label>رقم الهاتف / واتساب <i>*</i></label><input type="tel" name="phone" placeholder="مثال: 01012345678" required></div>
+          <div class="f-field"><label>رقم الهاتف / واتساب <i>*</i></label><input type="tel" name="phone" placeholder="01xxxxxxxxx (11 رقم)" required maxlength="15" pattern="[0-9+\s\-\(\)]*" inputmode="tel"></div>
           <div class="f-field"><label>البريد الإلكتروني <i>*</i></label><input type="email" name="email" placeholder="example@email.com" required></div>
           <div class="f-field"><label>نوع المشروع <i>*</i></label>
             <select name="type" required>
@@ -691,6 +707,20 @@ td select option{background:#0a0c16}
     </div>
     <div class="err-box" id="loginErr" style="margin-top:0;margin-bottom:14px">⚠️ بيانات الدخول غير صحيحة</div>
     <button class="btn btn-main" id="loginBtn" type="button" style="width:100%">دخول</button>
+  </div>
+</div>
+
+<!-- Order Details Modal -->
+<div class="modal" id="orderDetailsModal">
+  <div class="modal-box order-details-box">
+    <div class="modal-close" id="odClose">✕</div>
+    <div class="ok-circle" style="background:linear-gradient(135deg,rgba(109,94,252,.2),rgba(0,212,255,.12));border-color:rgba(109,94,252,.5);font-size:32px">📋</div>
+    <h3 style="margin-bottom:20px">تفاصيل الطلب</h3>
+    <div id="odContent"></div>
+    <div class="od-actions">
+      <a class="btn btn-main" id="odWhatsapp" target="_blank">💬 واتساب</a>
+      <a class="btn btn-ghost" id="odEmail">✉️ إيميل</a>
+    </div>
   </div>
 </div>
 
@@ -976,6 +1006,17 @@ orderForm.addEventListener('submit', async e => {
       return;
     }
   }
+  // ✅ Validation لرقم التليفون المصري
+const phoneClean = data.phone.trim().replace(/[\s\-\(\)]/g, '');
+const egyptPhoneRegex = /^(?:\+?20|0)?1[0125]\d{8}$/;
+if (!egyptPhoneRegex.test(phoneClean)){
+  const el = orderForm.querySelector('[name="phone"]');
+  el.style.borderColor = '#ff3d81'; el.focus();
+  el.scrollIntoView({ behavior:'smooth', block:'center' });
+  alert('⚠️ من فضلك أدخل رقم هاتف مصري صحيح\n(مثال: 01012345678 أو 01112345678 أو 01212345678 أو 01512345678)');
+  setTimeout(() => el.style.borderColor = '', 2500);
+  return;
+}
   if (!/^\S+@\S+\.\S+$/.test(data.email)){
     const el = orderForm.querySelector('[name="email"]');
     el.style.borderColor = '#ff3d81'; el.focus();
@@ -1227,23 +1268,82 @@ function renderAdmin(){
   empty.style.display = 'none';
 
   tbody.innerHTML = orders.map(o => `
-    <tr>
+    <tr class="row-click" onclick="window.__showOrderDetails('${esc(o.code)}')">
       <td><span class="code">${esc(o.code)}</span></td>
       <td><b>${esc(o.name)}</b></td>
-      <td class="hide-m"><a href="tel:${esc(o.phone)}" style="color:#7fe4ff">${esc(o.phone)}</a></td>
-      <td class="hide-m"><a href="mailto:${esc(o.email)}" style="color:#7fe4ff">${esc(o.email)}</a></td>
+      <td class="hide-m"><a href="tel:${esc(o.phone)}" style="color:#7fe4ff" onclick="event.stopPropagation()">${esc(o.phone)}</a></td>
+      <td class="hide-m"><a href="mailto:${esc(o.email)}" style="color:#7fe4ff" onclick="event.stopPropagation()">${esc(o.email)}</a></td>
       <td>${esc(o.type)}</td>
       <td class="hide-m num">${esc(o.estimate)}</td>
-      <td>
+      <td onclick="event.stopPropagation()">
         <select onchange="window.__updateStage('${esc(o.id)}', this.value)">
           ${STAGES.map((s, si) => `<option value="${si}" ${si === o.stage ? 'selected' : ''}>${esc(s.t)}</option>`).join('')}
         </select>
       </td>
       <td class="hide-m" style="font-size:12px;color:#8b93a7;white-space:nowrap">${fmtDate(o.createdAt)}</td>
-      <td><button class="adm-btn danger" style="padding:6px 12px;font-size:11px" onclick="window.__deleteOrder('${esc(o.id)}','${esc(o.code)}')">حذف</button></td>
+      <td onclick="event.stopPropagation()"><button class="adm-btn danger" style="padding:6px 12px;font-size:11px" onclick="window.__deleteOrder('${esc(o.id)}','${esc(o.code)}')">حذف</button></td>
     </tr>
   `).join('');
 }
+
+window.__showOrderDetails = (code) => {
+  const o = cachedOrders.find(x => x.code === code);
+  if (!o) return;
+  const modal = $('#orderDetailsModal');
+  const stageName = STAGES[o.stage]?.t || '—';
+  
+  $('#odContent').innerHTML = `
+    <div class="od-section">
+      <div class="od-grid">
+        <div><div class="od-label">كود التتبّع</div><div class="od-value num" style="color:#00d4ff">${esc(o.code)}</div></div>
+        <div><div class="od-label">الحالة</div><div class="od-value">${esc(stageName)}</div></div>
+      </div>
+    </div>
+    <div class="od-section">
+      <div class="od-label">الاسم</div>
+      <div class="od-value">${esc(o.name)}</div>
+    </div>
+    <div class="od-section">
+      <div class="od-grid">
+        <div><div class="od-label">📞 الهاتف</div><div class="od-value"><a href="tel:${esc(o.phone)}">${esc(o.phone)}</a></div></div>
+        <div><div class="od-label">✉️ البريد</div><div class="od-value"><a href="mailto:${esc(o.email)}">${esc(o.email)}</a></div></div>
+      </div>
+    </div>
+    <div class="od-section">
+      <div class="od-grid">
+        <div><div class="od-label">🏷️ نوع المشروع</div><div class="od-value">${esc(o.type)}</div></div>
+        <div><div class="od-label">💰 الميزانية</div><div class="od-value">${esc(o.budget || 'غير محدد')}</div></div>
+      </div>
+    </div>
+    <div class="od-section">
+      <div class="od-label">💵 التكلفة التقديرية</div>
+      <div class="od-value num" style="color:#00ffa3">${esc(o.estimate || 'غير محدد')}</div>
+    </div>
+    <div class="od-section">
+      <div class="od-label">📝 تفاصيل المشروع</div>
+      <div class="od-details"><p>${esc(o.details)}</p></div>
+    </div>
+    <div class="od-section">
+      <div class="od-label">📅 تاريخ الطلب</div>
+      <div class="od-value">${fmtDate(o.createdAt)}</div>
+    </div>
+  `;
+  
+  $('#odWhatsapp').href = `https://wa.me/${o.phone.replace(/[^\d]/g,'').replace(/^0/,'20')}?text=${encodeURIComponent('مرحباً ' + o.name + '، بخصوص طلبك ' + o.code + ' من MARSA Agency')}`;
+  $('#odEmail').href = `mailto:${o.email}?subject=${encodeURIComponent('بخصوص طلبك ' + o.code + ' من MARSA')}`;
+  
+  modal.classList.add('on');
+  document.body.classList.add('lock');
+};
+
+$('#odClose').onclick = () => {
+  $('#orderDetailsModal').classList.remove('on');
+  document.body.classList.remove('lock');
+};
+document.addEventListener('click', e => {
+  const m = $('#orderDetailsModal');
+  if (e.target === m){ m.classList.remove('on'); document.body.classList.remove('lock'); }
+});
 
 window.__updateStage = async (id, val) => {
   try {
