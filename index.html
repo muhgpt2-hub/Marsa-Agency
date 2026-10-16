@@ -118,32 +118,107 @@
     <div class="svc reveal d5"><div class="svc-ico">🎨</div><h3>معرض الأعمال الشخصي</h3><p>للمصممين والمصورين — بورتفوليو أنيق بأسلوب سينمائي.</p><div class="svc-tags"><span>بورتفوليو</span><span>أنيميشن</span><span>CV</span></div><div class="svc-price"><b class="num">2,200</b><small>ج.م — تبدأ من</small></div></div>
   </div>
 </section>
-<!-- ==================== DEMOS ==================== -->
-<section class="section" id="demos">
+<!-- ==================== PORTFOLIO ==================== -->
+<section class="section portfolio-section" id="demos">
   <div class="wrap">
     <div class="sec-head reveal">
-      <div class="chip">نماذج أعمالنا</div>
-      <h2 class="title">شوف <span class="grad-txt">شغلنا الحقيقي</span></h2>
-      <p>نماذج حقيقية بنيناها بأنفسنا — اضغط على أي نموذج لتجربته بنفسك.</p>
+      <div class="chip">✦ أعمالنا ✦</div>
+      <h2 class="title">مشاريع <span class="grad-txt">تنبض بالحياة</span></h2>
+      <p>كل مشروع هو تحفة فنية — اضغط لتجربتها بنفسك</p>
     </div>
 
-    <div class="demos-grid">
-      <a href="demos/noire-house/" target="_blank" class="demo-card reveal">
-        <div class="demo-preview">
-          <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=800&q=80" alt="NOIRÉ HOUSE">
-          <div class="demo-overlay"><span>مشاهدة مباشرة ←</span></div>
-        </div>
-        <div class="demo-info">
-          <div class="demo-tag">💈 صالون حلاقة</div>
-          <h3>NOIRÉ HOUSE</h3>
-          <p>صالون حلاقة فاخر مع نظام حجز واتساب، معرض أعمال، وتبديل لغة عربي/إنجليزي.</p>
-          <div class="demo-tech">
-            <span>HTML5</span><span>CSS3</span><span>JavaScript</span>
+    <!-- Filters -->
+    <div class="portfolio-filters reveal">
+      <button class="pf-btn active" data-filter="all">الكل</button>
+      <button class="pf-btn" data-filter="barber">💈 صالونات</button>
+      <button class="pf-btn" data-filter="restaurant">🍽️ مطاعم</button>
+      <button class="pf-btn" data-filter="clinic">🩺 عيادات</button>
+      <button class="pf-btn" data-filter="other">✨ أخرى</button>
+    </div>
+
+    <!-- Portfolio Grid -->
+    <div class="portfolio-grid">
+      <!-- PROJECT 01 -->
+      <article class="pf-card reveal" data-category="barber">
+        <div class="pf-number">001</div>
+        <div class="pf-frame">
+          <div class="pf-preview">
+            <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=1200&q=80" alt="NOIRÉ HOUSE">
+            <div class="pf-shine"></div>
+            <div class="pf-actions">
+              <a href="demos/noire-house/" target="_blank" class="pf-live">
+                <span>مشاهدة مباشرة</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M7 17L17 7M17 7H8M17 7V16"/>
+                </svg>
+              </a>
+            </div>
           </div>
         </div>
-      </a>
+        <div class="pf-meta">
+          <div class="pf-tag">💈 صالون حلاقة · فاخر</div>
+          <h3>NOIRÉ HOUSE</h3>
+          <p>صالون حلاقة راقي مع نظام حجز واتساب، معرض أعمال تفاعلي، تبديل لغة فوري، وحركات 3D سينمائية.</p>
+          <div class="pf-footer">
+            <div class="pf-tech">
+              <span>HTML5</span>
+              <span>CSS3</span>
+              <span>JavaScript</span>
+            </div>
+            <div class="pf-date">2026 / 10</div>
+          </div>
+        </div>
+      </article>
 
-      <!-- 🔜 هنا هنضيف نماذج جديدة بعدين -->
+      <!-- PROJECT 02 — قريباً -->
+      <article class="pf-card pf-coming reveal d1" data-category="restaurant">
+        <div class="pf-number">002</div>
+        <div class="pf-frame">
+          <div class="pf-preview">
+            <div class="pf-coming-visual">
+              <span class="pf-coming-icon">🍽️</span>
+              <div class="pf-coming-line"></div>
+              <span class="pf-coming-text">قريباً</span>
+            </div>
+          </div>
+        </div>
+        <div class="pf-meta">
+          <div class="pf-tag">🍽️ مطعم · قادم</div>
+          <h3>قيد التنفيذ</h3>
+          <p>مطعم عصري مع نظام طلب أونلاين وقائمة تفاعلية.</p>
+          <div class="pf-footer">
+            <div class="pf-tech">
+              <span>Coming</span>
+            </div>
+            <div class="pf-date">2026 / 11</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- PROJECT 03 — قريباً -->
+      <article class="pf-card pf-coming reveal d2" data-category="clinic">
+        <div class="pf-number">003</div>
+        <div class="pf-frame">
+          <div class="pf-preview">
+            <div class="pf-coming-visual">
+              <span class="pf-coming-icon">🩺</span>
+              <div class="pf-coming-line"></div>
+              <span class="pf-coming-text">قريباً</span>
+            </div>
+          </div>
+        </div>
+        <div class="pf-meta">
+          <div class="pf-tag">🩺 عيادة · قادم</div>
+          <h3>قيد التنفيذ</h3>
+          <p>عيادة حديثة مع نظام حجز مواعيد إلكتروني وملف طبي.</p>
+          <div class="pf-footer">
+            <div class="pf-tech">
+              <span>Coming</span>
+            </div>
+            <div class="pf-date">2026 / 12</div>
+          </div>
+        </div>
+      </article>
     </div>
   </div>
 </section>

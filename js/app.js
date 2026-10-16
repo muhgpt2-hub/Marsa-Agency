@@ -659,6 +659,32 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
 
 document.body.classList.remove('lock');
 goTo(1);
+/* ============================================================
+   PORTFOLIO FILTERS
+   ============================================================ */
+(function(){
+  const filterBtns = document.querySelectorAll('.pf-btn');
+  const cards = document.querySelectorAll('.pf-card');
 
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+
+      cards.forEach(card => {
+        const cat = card.dataset.category;
+        const show = filter === 'all' || cat === filter;
+        card.classList.toggle('hidden', !show);
+        if (show){
+          card.style.animation = 'none';
+          setTimeout(() => {
+            card.style.animation = 'paneIn .5s cubic-bezier(.22,1,.36,1)';
+          }, 10);
+        }
+      });
+    });
+  });
+})();
 console.log('%c MARSA AGENCY v3.0 ', 'background:linear-gradient(135deg,#00ffa3,#7c5cff);color:#050608;font-size:20px;font-weight:900;padding:10px 22px;border-radius:8px;');
 console.log('%c🛡️ لوحة التحكم: Ctrl+Shift+A أو 5 ضغطات على اللوجو', 'color:#00ffa3;font-size:13px;');
