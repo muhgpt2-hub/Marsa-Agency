@@ -649,10 +649,18 @@ async function doTrack(){
 /* ============================================================
    INIT
    ============================================================ */
+/* منع الرجوع لآخر مكان */
 if ('scrollRestoration' in history) {
   history.scrollRestoration = 'manual';
 }
-window.scrollTo(0, 0);
+// يبدأ دايماً من فوق
+window.addEventListener('load', () => {
+  window.scrollTo({ top: 0, behavior: 'instant' });
+});
+// ولمن المستخدم يعمل Refresh
+window.addEventListener('beforeunload', () => {
+  window.scrollTo(0, 0);
+});
 
 const yearEl = $('#year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
