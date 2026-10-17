@@ -242,7 +242,7 @@ body::after{
 .portfolio-section{
   position:relative;
   padding:120px 6%;
-  max-width:1200px;
+  max-width:1300px;
   margin:0 auto;
 }
 .portfolio-section::before{
@@ -252,6 +252,8 @@ body::after{
   height:1px;
   background:linear-gradient(90deg,transparent,var(--accent-line),transparent);
 }
+
+/* ===== Filters ===== */
 .portfolio-filters{
   display:flex;
   justify-content:center;
@@ -282,146 +284,250 @@ body::after{
   border-color:transparent;
   box-shadow:0 10px 30px -10px rgba(0,255,163,.6);
 }
+
+/* ===== Grid — 3 columns ===== */
 .portfolio-grid{
   display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:20px;
+  grid-template-columns:repeat(3,1fr);
+  gap:24px;
 }
+
+/* ===== Card ===== */
 .pf-card{
-  position:relative;
-  z-index:1;
-  aspect-ratio:1/1.15;
-  padding:26px 22px;
-  background:
-    radial-gradient(circle at 50% 0%, rgba(0,255,163,.05), transparent 60%),
-    linear-gradient(165deg,rgba(255,255,255,.035),rgba(255,255,255,.008));
-  border:1px solid var(--line);
-  border-radius:18px;
   display:flex;
   flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
+  background:rgba(255,255,255,.02);
+  border:1px solid var(--line);
+  border-radius:20px;
+  overflow:hidden;
+  transition:all .5s var(--ease);
   text-decoration:none;
   color:inherit;
-  transition:all .5s var(--ease);
-  overflow:visible;
   cursor:pointer;
-}
-.pf-card::before{
-  content:'';
-  position:absolute;
-  inset:-1px;
-  border-radius:18px;
-  background:linear-gradient(135deg,transparent 30%,rgba(0,255,163,.7) 50%,transparent 70%);
-  opacity:0;
-  transition:opacity .5s var(--ease);
-  pointer-events:none;
-  z-index:-1;
-  filter:blur(6px);
 }
 .pf-card:hover{
   transform:translateY(-8px);
   border-color:var(--accent-line);
-  box-shadow:
-    0 30px 60px -25px rgba(0,255,163,.3),
-    0 0 0 1px rgba(0,255,163,.15) inset;
+  box-shadow:0 30px 60px -25px rgba(0,255,163,.3);
 }
-.pf-card:hover::before{opacity:1}
-.pf-num{
+
+/* Preview (المعاينة) */
+.pf-preview{
+  position:relative;
+  aspect-ratio:16/11;
+  padding:20px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+.pf-preview::before{
+  content:'';
   position:absolute;
-  top:12px;
-  right:12px;
-  width:36px;
-  height:36px;
+  inset:0;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(255,255,255,.08), transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(0,0,0,.3), transparent 50%);
+  pointer-events:none;
+}
+
+/* Mockup — الشكل اللي جوه */
+.pf-mockup{
+  width:100%;
+  max-width:340px;
+  background:rgba(0,0,0,.4);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:10px;
+  overflow:hidden;
+  transform:perspective(800px) rotateX(3deg);
+  transition:transform .6s var(--ease);
+  box-shadow:0 20px 40px rgba(0,0,0,.5);
+}
+.pf-card:hover .pf-mockup{
+  transform:perspective(800px) rotateX(0);
+}
+
+.pf-mock-bar{
+  display:flex;
+  gap:5px;
+  padding:8px 12px;
+  background:rgba(0,0,0,.3);
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+.pf-mock-bar span{
+  width:7px;height:7px;
   border-radius:50%;
-  display:grid;
-  place-items:center;
-  background:rgba(0,255,163,.08);
+  background:rgba(255,255,255,.3);
+}
+
+.pf-mock-content{
+  padding:18px 16px 20px;
+  text-align:center;
+}
+.pf-mock-tag{
+  font-family:var(--mono);
+  font-size:8px;
+  letter-spacing:3px;
+  color:rgba(255,255,255,.5);
+  margin-bottom:12px;
+  text-transform:uppercase;
+}
+.pf-mock-title{
+  font-family:var(--disp);
+  font-size:18px;
+  font-weight:800;
+  line-height:1.2;
+  margin-bottom:16px;
+}
+.pf-mock-lines{
+  display:flex;
+  flex-direction:column;
+  gap:5px;
+  margin-bottom:14px;
+  align-items:center;
+}
+.pf-mock-lines span{
+  height:4px;
+  border-radius:4px;
+  background:rgba(255,255,255,.15);
+}
+.pf-mock-lines span:nth-child(1){width:65%}
+.pf-mock-lines span:nth-child(2){width:45%}
+.pf-mock-btn{
+  display:inline-block;
+  padding:7px 18px;
+  border-radius:6px;
+  font-size:10.5px;
+  font-weight:800;
+  font-family:var(--body);
+}
+
+/* Badge */
+.pf-badge,.pf-badge-soon{
+  position:absolute;
+  bottom:14px;
+  right:14px;
+  padding:6px 14px;
+  border-radius:100px;
+  font-size:10.5px;
+  font-weight:800;
+  font-family:var(--mono);
+  letter-spacing:1px;
+  backdrop-filter:blur(10px);
+}
+.pf-badge{
+  background:rgba(0,255,163,.15);
+  border:1px solid rgba(0,255,163,.4);
+  color:var(--accent);
+}
+.pf-badge-soon{
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.15);
+  color:var(--text-3);
+}
+
+/* Info (المعلومات تحت) */
+.pf-info{
+  padding:22px 22px 24px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  flex:1;
+}
+.pf-info-head{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-bottom:2px;
+}
+.pf-cat{
+  display:inline-block;
+  padding:4px 12px;
+  border-radius:100px;
+  background:var(--accent-soft);
   border:1px solid var(--accent-line);
   color:var(--accent);
-  font-family:var(--mono);
   font-size:11px;
   font-weight:700;
-  letter-spacing:.5px;
-  transition:all .4s var(--ease);
-  z-index:2;
+  font-family:var(--mono);
+  letter-spacing:.3px;
 }
-.pf-card:hover .pf-num{
-  background:var(--accent);
-  color:var(--ink);
-  border-color:transparent;
-  transform:scale(1.1) rotate(-8deg);
-}
-.pf-icon{
-  font-size:42px;
-  line-height:1;
-  margin-bottom:16px;
-  filter:drop-shadow(0 0 20px rgba(0,255,163,.35));
-  transition:transform .5s var(--ease);
-}
-.pf-card:hover .pf-icon{transform:scale(1.15)}
-.pf-title{
+.pf-name{
   font-family:var(--disp);
-  font-size:17px;
+  font-size:22px;
   font-weight:800;
   color:var(--text);
-  letter-spacing:-.2px;
-  margin-bottom:8px;
-  transition:all .3s var(--ease);
-  line-height:1.3;
-}
-.pf-card:hover .pf-title{
-  background:var(--grad);
-  -webkit-background-clip:text;
-  background-clip:text;
-  color:transparent;
+  letter-spacing:-.3px;
+  line-height:1.2;
 }
 .pf-desc{
   color:var(--text-2);
-  font-size:12.5px;
-  line-height:1.6;
+  font-size:13.5px;
+  line-height:1.7;
   font-weight:400;
-  margin-bottom:18px;
-  max-width:180px;
+  flex:1;
+  margin-bottom:6px;
 }
-.pf-tag{
-  display:inline-block;
-  padding:4px 12px;
-  background:rgba(255,255,255,.03);
-  border:1px solid var(--line-2);
-  border-radius:100px;
-  color:var(--text-3);
-  font-family:var(--mono);
-  font-size:10.5px;
-  letter-spacing:.5px;
-  font-weight:600;
+.pf-actions{
+  display:flex;
+  justify-content:flex-end;
+  padding-top:14px;
+  border-top:1px solid var(--line-2);
   margin-top:auto;
-  transition:all .4s var(--ease);
 }
-.pf-card:hover .pf-tag{
-  background:var(--accent-soft);
-  border-color:var(--accent-line);
+.pf-cta{
+  font-size:13.5px;
+  font-weight:700;
   color:var(--accent);
+  transition:all .3s var(--ease);
+  font-family:var(--body);
 }
+.pf-card:hover .pf-cta{
+  letter-spacing:1px;
+  transform:translateX(-4px);
+}
+.pf-cta-soon{
+  color:var(--text-3) !important;
+}
+
+/* Coming Soon */
 .pf-soon{
-  opacity:.65;
   cursor:not-allowed;
   pointer-events:none;
 }
-.pf-soon .pf-icon{filter:grayscale(.7);opacity:.5}
-.pf-soon .pf-title{color:var(--text-3)}
-.pf-soon .pf-num{
-  background:rgba(255,255,255,.03);
-  border-color:var(--line-2);
-  color:var(--text-3);
+.pf-soon .pf-preview{
+  filter:grayscale(.5) brightness(.7);
 }
-.pf-soon:hover{transform:translateY(-4px);border-color:var(--line-2);box-shadow:0 20px 40px -20px rgba(0,0,0,.5)}
-.pf-soon:hover .pf-title{color:var(--text-3)}
-.pf-soon:hover .pf-icon{transform:none}
-.pf-soon:hover .pf-num{background:rgba(255,255,255,.03);color:var(--text-3);transform:none}
-.pf-soon:hover::before{opacity:0}
+.pf-soon:hover{
+  transform:none;
+  border-color:var(--line);
+  box-shadow:none;
+}
+
+/* Hidden */
 .pf-card.hidden{display:none}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:1024px){
+  .portfolio-grid{grid-template-columns:repeat(2,1fr);gap:20px}
+}
+@media(max-width:768px){
+  .portfolio-section{padding:90px 6%}
+  .portfolio-grid{grid-template-columns:1fr;gap:20px}
+  .portfolio-filters{margin-bottom:40px;gap:8px}
+  .pf-btn{padding:8px 16px;font-size:12px}
+  .pf-mock-title{font-size:16px}
+  .pf-name{font-size:20px}
+  .pf-desc{font-size:13px}
+}
+@media(max-width:520px){
+  .portfolio-section{padding:70px 5%}
+  .pf-btn{padding:7px 14px;font-size:11px}
+  .pf-preview{padding:14px}
+  .pf-info{padding:18px 18px 20px}
+  .pf-name{font-size:18px}
+  .pf-desc{font-size:12.5px}
+}
 
 /* ===== WHY ===== */
 .why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
